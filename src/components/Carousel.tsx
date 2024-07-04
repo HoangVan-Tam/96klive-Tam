@@ -16,12 +16,12 @@ const Carousel = ({
 
   const prev = () =>
     setCurrentIndex((currentIndex) =>
-      currentIndex === 0 ? children.length - 2 : currentIndex - 1
+      currentIndex === 0 ? children.length - 3 : currentIndex - 1
     );
 
   const next = () =>
     setCurrentIndex((currentIndex) =>
-      currentIndex === children.length - 2 ? 0 : currentIndex + 1
+      currentIndex === children.length - 3 ? 0 : currentIndex + 1
     );
 
   useEffect(() => {
@@ -31,14 +31,14 @@ const Carousel = ({
   }, []);
 
   return (
-    <div className="overflow-hidden relative pb-12">
+    <div className="overflow-hidden relative">
       <div
-        className="h-full flex transition-transform ease-out duration-500"
-        style={{ transform: `translateX(-${currentIndex * 50}%)` }}
+        className="h-full flex transition-transform ease-out duration-1000"
+        style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
       >
         {children}
       </div>
-      <div className="flex items-center justify-center pb-12">
+      <div className="flex items-center justify-center">
         <button
           onClick={prev}
           className="p-3 bg-white/80 mr-3 text-3xl transition-all hover:bg-black hover:text-white"

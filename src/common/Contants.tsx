@@ -6,8 +6,23 @@ export const Data_Carousel = [
 
 export const Data_Match = [
   {
-    id: 0,
-    round: 1,
+    id: 4,
+    round: 'Round 2',
+    matchDate: "11/11/2024",
+    result: [
+      {
+        teamName: "Nguon Song",
+        score: 1,
+      },
+      {
+        teamName: "Hy Vong",
+        score: 2,
+      },
+    ],
+  },
+  {
+    id: 3,
+    round: 'Round 1',
     matchDate: "11/11/2024",
     result: [
       {
@@ -22,8 +37,8 @@ export const Data_Match = [
   },
 
   {
-    id: 1,
-    round: 1,
+    id: 2,
+    round: 'Round 1',
     matchDate: "11/11/2024",
     result: [
       {
@@ -38,8 +53,8 @@ export const Data_Match = [
   },
 
   {
-    id: 2,
-    round: 1,
+    id: 1,
+    round: 'Round 1',
     matchDate: "11/11/2024",
     result: [
       {
@@ -54,8 +69,8 @@ export const Data_Match = [
   },
 
   {
-    id: 3,
-    round: 1,
+    id: 0,
+    round: 'Round 1',
     matchDate: "11/11/2024",
     result: [
       {
@@ -68,4 +83,5 @@ export const Data_Match = [
       },
     ],
   },
+  
 ];
