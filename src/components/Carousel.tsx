@@ -13,16 +13,35 @@ const Carousel = ({
   children,
 }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [width, setWidth] = useState(0);
 
-  const prev = () =>
+  const prev = () => {
+    var step =
+      425 < width && width < 768
+        ? 1
+        : 768 < width && width < 1280
+        ? 2
+        : width > 1280
+        ? 3
+        : 0;
     setCurrentIndex((currentIndex) =>
-      currentIndex === 0 ? children.length - 3 : currentIndex - 1
+      currentIndex === 0 ? children.length - step : currentIndex - 1
     );
+  };
 
-  const next = () =>
+  const next = () => {
+    var step =
+      425 < width && width < 768
+        ? 1
+        : 768 < width && width < 1280
+        ? 2
+        : width > 1280
+        ? 3
+        : 0;
     setCurrentIndex((currentIndex) =>
-      currentIndex === children.length - 3 ? 0 : currentIndex + 1
+      currentIndex === children.length - step ? 0 : currentIndex + 1
     );
+  };
 
   useEffect(() => {
     if (!autoSlide) return;
@@ -30,10 +49,33 @@ const Carousel = ({
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className="overflow-hidden relative">
       <div
-        className="h-full flex transition-transform ease-out duration-1000"
+        className="h-full flex transition-transform ease-out duration-1000 md:hidden"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {children}
+      </div>
+      <div
+        className="h-full transition-transform ease-out duration-1000 hidden md:flex xl:hidden"
+        style={{ transform: `translateX(-${currentIndex * 50}%)` }}
+      >
+        {children}
+      </div>
+      <div
+        className="h-full transition-transform ease-out duration-1000 hidden xl:flex"
         style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
       >
         {children}
