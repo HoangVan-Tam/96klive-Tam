@@ -17,13 +17,7 @@ const Carousel = ({
 
   const prev = () => {
     var step =
-      425 < width && width < 768
-        ? 1
-        : 768 < width && width < 1280
-        ? 2
-        : width > 1280
-        ? 3
-        : 0;
+      width < 768 ? 1 : 768 < width && width < 1280 ? 2 : width > 1280 ? 3 : 0;
     setCurrentIndex((currentIndex) =>
       currentIndex === 0 ? children.length - step : currentIndex - 1
     );
@@ -31,13 +25,7 @@ const Carousel = ({
 
   const next = () => {
     var step =
-      425 < width && width < 768
-        ? 1
-        : 768 < width && width < 1280
-        ? 2
-        : width > 1280
-        ? 3
-        : 0;
+      width < 768 ? 1 : 768 < width && width < 1280 ? 2 : width > 1280 ? 3 : 0;
     setCurrentIndex((currentIndex) =>
       currentIndex === children.length - step ? 0 : currentIndex + 1
     );
@@ -80,7 +68,7 @@ const Carousel = ({
       >
         {children}
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-10">
         <button
           onClick={prev}
           className="p-3 bg-white/80 mr-3 text-3xl transition-all hover:bg-black hover:text-white"

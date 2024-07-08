@@ -1,8 +1,8 @@
 import "./App.css";
-import { Data_Carousel, Data_Match } from "./common/Contants";
+import { Data_MatchIncoming, Data_MatchResult } from "./common/Contants";
+import { getLogoByTeamName } from "./common/Helper";
 import Carousel from "./components/Carousel";
 import Navbar from "./components/Navbar";
-import texture_bg from "./assets/texture_bg.png";
 
 function App() {
   return (
@@ -12,22 +12,83 @@ function App() {
       <h1 className="text-3xl font-bold underline h-[320px] bg-cyan-500">
         Hello world!
       </h1>
+
       <div
-        className={`bg-[linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url('/src/assets/texture_bg.png')] bg-cover bg-no-repeat p-10`}
+        className={`bg-[linear-gradient(0deg,rgba(0,0,0,0.85),rgba(0,0,0,0.85)),url('/src/assets/texture_bg.png')] bg-cover bg-no-repeat p-5 md:p-10`}
       >
-        asldj
+        <Carousel>
+          {Data_MatchIncoming.map((item) => {
+            return (
+              <div key={item.id} className="w-full">
+                <h2 className="text-center text-white uppercase px-5 font-bold bg-red-800 w-fit m-auto mb-10">
+                  Upcoming match
+                </h2>
+                <div className="sm:hidden">
+                  <div className="border-b-[1px] border-gray-500 pb-5 px-5">
+                    <div className="text-white font-bold flex justify-between items-center text-xl">
+                      <div className="flex items-center">
+                        <div className="w-10">
+                          <img src={getLogoByTeamName(item.team1)} alt="" />
+                        </div>
+                        <p className="ml-3">{item.team1.toUpperCase()}</p>
+                      </div>
+                      <p>-</p>
+                    </div>
+                    <div className="text-white font-bold flex justify-between items-center text-xl mt-3">
+                      <div className="flex items-center">
+                        <div className="w-10">
+                          <img src={getLogoByTeamName(item.team2)} alt="" />
+                        </div>
+                        <p className="ml-3">{item.team2.toUpperCase()}</p>
+                      </div>
+                      <p>-</p>
+                    </div>
+                  </div>
+                  <div className="text-gray-300 font-bold mt-5">
+                    <p>{item.round}</p>
+                    <p className="text-2xl">
+                      {item.matchTime}, {item.matchDate}
+                    </p>
+                    <p>{item.stadium}</p>
+                  </div>
+                </div>
+                <div className="hidden sm:block max-w-screen-md m-auto">
+                  <div className="text-white flex items-center justify-around font-bold text-xl md:text-3xl md:justify-evenly">
+                    <div className="w-[50px]">
+                      <img src={getLogoByTeamName(item.team1)} alt="" />
+                    </div>
+                    <p>{item.team1.toUpperCase()}</p>
+                    <p>- : -</p>
+                    <p>{item.team2.toUpperCase()}</p>
+                    <div className="w-[50px]">
+                      <img src={getLogoByTeamName(item.team2)} alt="" />
+                    </div>
+                  </div>
+                  <div className="text-gray-300 text-center mt-3">
+                    <p>{item.round}</p>
+                    <p className="text-2xl">
+                      {item.matchTime}, {item.matchDate}
+                    </p>
+                    <p>{item.stadium}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </Carousel>
       </div>
+
       <div className="bg-gray-100/80 sm:p-5 py-5">
         <Carousel>
-          {Data_Match.map((item) => {
+          {Data_MatchResult.map((item) => {
             return (
               <div
                 key={item.id}
                 className="hidden sm:block sm:min-w-[100%] md:min-w-[50%] xl:min-w-[33.33%] px-3"
               >
                 <div className="sm:max-w-[520px] m-auto">
-                  <div className="bg-white pb-5 border-2 border-red-500">
-                    <p className="bg-red-500 text-white w-fit p-2 text-xs font-bold m-auto">
+                  <div className="bg-white pb-5 border-2 border-red-800">
+                    <p className="bg-red-800 text-white w-fit p-2 text-xs font-bold m-auto">
                       AG FOOTBALL LEAGUE
                     </p>
                     <div className="grid grid-cols-3 gap-3 md:gap-0 my-5">

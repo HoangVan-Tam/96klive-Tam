@@ -4,10 +4,22 @@ export const Data_Carousel = [
   `"We are very excited by what the future holds. We believe that actions speak louder than words and so look forward to demonstrating to the market our capability as we take on the exciting opportunities that 2024 has to offer."`,
 ];
 
-export const Data_Match = [
+export const Data_MatchIncoming = [
+  {
+    id: 0,
+    round: "Round 2",
+    matchDate: "11/11/2024",
+    team1: "Thiên Phú",
+    team2: "Hy Vọng",
+    stadium: "San 1",
+    matchTime: "19:00",
+  },
+];
+
+export const Data_MatchResult = [
   {
     id: 4,
-    round: 'Round 2',
+    round: "Round 2",
     matchDate: "11/11/2024",
     result: [
       {
@@ -22,7 +34,7 @@ export const Data_Match = [
   },
   {
     id: 3,
-    round: 'Round 1',
+    round: "Round 1",
     matchDate: "11/11/2024",
     result: [
       {
@@ -38,7 +50,7 @@ export const Data_Match = [
 
   {
     id: 2,
-    round: 'Round 1',
+    round: "Round 1",
     matchDate: "11/11/2024",
     result: [
       {
@@ -54,7 +66,7 @@ export const Data_Match = [
 
   {
     id: 1,
-    round: 'Round 1',
+    round: "Round 1",
     matchDate: "11/11/2024",
     result: [
       {
@@ -70,7 +82,7 @@ export const Data_Match = [
 
   {
     id: 0,
-    round: 'Round 1',
+    round: "Round 1",
     matchDate: "11/11/2024",
     result: [
       {
@@ -83,5 +95,4 @@ export const Data_Match = [
       },
     ],
   },
-  
 ];
