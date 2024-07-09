@@ -6,6 +6,15 @@ export const Data_Carousel = [
 
 export const Data_MatchIncoming = [
   {
+    id: 1,
+    round: "Round 2",
+    matchDate: "11/11/2024",
+    team1: "Thiên Phú",
+    team2: "Hy Vọng",
+    stadium: "San 1",
+    matchTime: "19:00",
+  },
+  {
     id: 0,
     round: "Round 2",
     matchDate: "11/11/2024",
@@ -23,11 +32,11 @@ export const Data_MatchResult = [
     matchDate: "11/11/2024",
     result: [
       {
-        teamName: "Nguon Song",
+        teamName: "Nguồn Sống",
         score: 1,
       },
       {
-        teamName: "Hy Vong",
+        teamName: "Hy Vọng",
         score: 2,
       },
     ],
@@ -38,11 +47,11 @@ export const Data_MatchResult = [
     matchDate: "11/11/2024",
     result: [
       {
-        teamName: "Thien Phu",
+        teamName: "Thiên Phú",
         score: 1,
       },
       {
-        teamName: "Hy Vong",
+        teamName: "Hy Vọng",
         score: 2,
       },
     ],
@@ -54,11 +63,11 @@ export const Data_MatchResult = [
     matchDate: "11/11/2024",
     result: [
       {
-        teamName: "Mo Uoc",
+        teamName: "Mơ Ước",
         score: 1,
       },
       {
-        teamName: "Hy Vong",
+        teamName: "Hy Vọng",
         score: 2,
       },
     ],
@@ -74,7 +83,7 @@ export const Data_MatchResult = [
         score: 1,
       },
       {
-        teamName: "Hy Vong",
+        teamName: "Hy Vọng",
         score: 2,
       },
     ],
@@ -86,11 +95,11 @@ export const Data_MatchResult = [
     matchDate: "11/11/2024",
     result: [
       {
-        teamName: "Nguon Song",
+        teamName: "Nguồn Sống",
         score: 1,
       },
       {
-        teamName: "Hy Vong",
+        teamName: "Hy Vọng",
         score: 2,
       },
     ],

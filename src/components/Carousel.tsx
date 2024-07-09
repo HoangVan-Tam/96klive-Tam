@@ -5,27 +5,48 @@ interface CarouselProps {
   children: ReactNode[];
   autoSlide?: boolean;
   autoSlideInterval?: number;
+  mutiItemPerSilde?: boolean;
 }
 
 const Carousel = ({
   autoSlide = false,
   autoSlideInterval = 3000,
+  mutiItemPerSilde = true,
   children,
 }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [width, setWidth] = useState(0);
 
   const prev = () => {
-    var step =
-      width < 768 ? 1 : 768 < width && width < 1280 ? 2 : width > 1280 ? 3 : 0;
+    var step = 1;
+    if (mutiItemPerSilde == true) {
+      step =
+        width < 768
+          ? 1
+          : 768 < width && width < 1280
+          ? 2
+          : width > 1280
+          ? 3
+          : 0;
+    }
+
     setCurrentIndex((currentIndex) =>
       currentIndex === 0 ? children.length - step : currentIndex - 1
     );
   };
 
   const next = () => {
-    var step =
-      width < 768 ? 1 : 768 < width && width < 1280 ? 2 : width > 1280 ? 3 : 0;
+    var step = 1;
+    if (mutiItemPerSilde == true) {
+      step =
+        width < 768
+          ? 1
+          : 768 < width && width < 1280
+          ? 2
+          : width > 1280
+          ? 3
+          : 0;
+    }
     setCurrentIndex((currentIndex) =>
       currentIndex === children.length - step ? 0 : currentIndex + 1
     );
@@ -51,19 +72,25 @@ const Carousel = ({
   return (
     <div className="overflow-hidden relative">
       <div
-        className="h-full flex transition-transform ease-out duration-1000 md:hidden"
+        className={`h-full flex transition-transform ease-out duration-1000  ${
+          mutiItemPerSilde && "md:hidden"
+        }`}
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {children}
       </div>
       <div
-        className="h-full transition-transform ease-out duration-1000 hidden md:flex xl:hidden"
+        className={`h-full transition-transform ease-out duration-1000 hidden ${
+          mutiItemPerSilde && "md:flex xl:hidden"
+        }`}
         style={{ transform: `translateX(-${currentIndex * 50}%)` }}
       >
         {children}
       </div>
       <div
-        className="h-full transition-transform ease-out duration-1000 hidden xl:flex"
+        className={`h-full transition-transform ease-out duration-1000 hidden  ${
+          mutiItemPerSilde && "xl:flex"
+        }`}
         style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
       >
         {children}
