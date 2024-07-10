@@ -102,9 +102,17 @@ function App() {
                         AG FOOTBALL LEAGUE
                       </p>
                       <div className="grid grid-cols-3 gap-3 md:gap-0 my-5">
-                        <p className="font-bold flex justify-end items-center text-sm md:text-base">
-                          {item.result[0].teamName.toUpperCase()}
-                        </p>
+                        <div className="flex items-center justify-end">
+                          <div className="w-[30px] lg:w-[40px] mr-3">
+                            <img
+                              src={getLogoByTeamName(item.result[0].teamName)}
+                              alt=""
+                            />
+                          </div>
+                          <p className="font-bold flex justify-end items-center text-sm md:text-base lg:text-lg">
+                            {item.result[0].teamName.toUpperCase()}
+                          </p>
+                        </div>
                         <div className="flex justify-center items-center">
                           <p className="bg-black text-white px-3 py-1 text-2xl font-bold">
                             {item.result[0].score}
@@ -114,9 +122,17 @@ function App() {
                             {item.result[1].score}
                           </p>
                         </div>
-                        <p className="font-bold flex justify-start items-center text-left text-sm md:text-base">
-                          {item.result[1].teamName.toUpperCase()}
-                        </p>
+                        <div className="flex items-center justify-start">
+                          <p className="font-bold flex justify-start items-center text-left text-sm md:text-base lg:text-lg">
+                            {item.result[1].teamName.toUpperCase()}
+                          </p>
+                          <div className="w-[30px] lg:w-[40px] ml-3">
+                            <img
+                              src={getLogoByTeamName(item.result[1].teamName)}
+                              alt=""
+                            />
+                          </div>
+                        </div>
                       </div>
                       <p className="text-center text-sm text-black/50">
                         {item.round}
@@ -131,8 +147,8 @@ function App() {
             })}
           </Carousel>
         </div>
-        {/* Mobile */}
 
+        {/* Mobile */}
         <div className="sm:hidden">
           <Carousel>
             {Data_MatchResult.map((item) => {
