@@ -112,7 +112,6 @@ export const Data_LeagueTable = [
     teams: [
       {
         teamName: "Thiên Phú",
-        point: 4,
         noOfGoal: 1,
         noOfLostGoal: 1,
         yellowCard: 1,
@@ -121,12 +120,11 @@ export const Data_LeagueTable = [
       },
       {
         teamName: "Hy Vọng",
-        point: 4,
         noOfGoal: 1,
         noOfLostGoal: 1,
         yellowCard: 1,
         redCard: 2,
-        matchHistory: ["W", "L", "W"],
+        matchHistory: ["W", "W", "W"],
       },
     ],
   },
@@ -135,7 +133,6 @@ export const Data_LeagueTable = [
     teams: [
       {
         teamName: "La-xa-rơ",
-        point: 4,
         noOfGoal: 3,
         noOfLostGoal: 1,
         yellowCard: 1,
@@ -144,7 +141,6 @@ export const Data_LeagueTable = [
       },
       {
         teamName: "Mơ Ước",
-        point: 4,
         noOfGoal: 1,
         noOfLostGoal: 5,
         yellowCard: 1,
