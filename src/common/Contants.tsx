@@ -105,3 +105,52 @@ export const Data_MatchResult = [
     ],
   },
 ];
+
+export const Data_LeagueTable = [
+  {
+    groupName: "Group A",
+    teams: [
+      {
+        teamName: "Thiên Phú",
+        point: 4,
+        noOfGoal: 1,
+        noOfLostGoal: 1,
+        yellowCard: 1,
+        redCard: 2,
+        matchHistory: ["W", "L", "W"],
+      },
+      {
+        teamName: "Hy Vọng",
+        point: 4,
+        noOfGoal: 1,
+        noOfLostGoal: 1,
+        yellowCard: 1,
+        redCard: 2,
+        matchHistory: ["W", "L", "W"],
+      },
+    ],
+  },
+  {
+    groupName: "Group B",
+    teams: [
+      {
+        teamName: "La-xa-rơ",
+        point: 4,
+        noOfGoal: 3,
+        noOfLostGoal: 1,
+        yellowCard: 1,
+        redCard: 2,
+        matchHistory: ["W", "L", "W"],
+      },
+      {
+        teamName: "Mơ Ước",
+        point: 4,
+        noOfGoal: 1,
+        noOfLostGoal: 5,
+        yellowCard: 1,
+        redCard: 2,
+        matchHistory: ["W", "L", "D"],
+      },
+    ],
+  },
+];

@@ -135,3 +135,10 @@
   h2{
     font-size: x-large;
   }
+  .cross-div{
+    border-bottom: 40px solid rgb(153 27 27 / 1);
+    border-left: 0 solid transparent;
+    border-right: 70px solid transparent;
+    height: 0;
+    width: 0;
+  }

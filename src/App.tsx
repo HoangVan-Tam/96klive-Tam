@@ -1,6 +1,10 @@
 import "./App.css";
-import { Data_MatchIncoming, Data_MatchResult } from "./common/Contants";
-import { getLogoByTeamName } from "./common/Helper";
+import {
+  Data_LeagueTable,
+  Data_MatchIncoming,
+  Data_MatchResult,
+} from "./common/Contants";
+import { getLogoByTeamName, getPointOfTeam } from "./common/Helper";
 import Carousel from "./components/Carousel";
 import Navbar from "./components/Navbar";
 
@@ -21,7 +25,7 @@ function App() {
             return (
               <div key={item.id} className="min-w-full">
                 <h2 className="text-center text-white uppercase px-5 font-bold bg-red-800 w-fit m-auto mb-10">
-                  Upcoming match
+                  Trận đấu sắp tới
                 </h2>
 
                 {/* Mobile */}
@@ -84,7 +88,7 @@ function App() {
 
       <div className="bg-gray-200/80 p-5 md:p-10">
         <h2 className="text-center text-white uppercase px-5 font-bold bg-red-800 w-fit m-auto mb-10">
-          Match result
+          Kết quả trận đấu
         </h2>
 
         {/* PC */}
@@ -186,8 +190,159 @@ function App() {
         </div>
       </div>
 
-      <div>
-        <h2>BẢNG XẾP HẠNG</h2>
+      <div className="p-5 md:p-10">
+        <h2 className="text-center text-white uppercase px-5 font-bold bg-red-800 w-fit m-auto mb-10">
+          Bảng xếp hạng
+        </h2>
+        <div className="max-w-7xl m-auto overflow-x-scroll">
+          {Data_LeagueTable.map((item, index) => {
+            return (
+              <div key={index} className="mb-10">
+                <div className="flex">
+                  <h3 className="bg-red-800 w-fit py-2 px-3 text-white font-bold uppercase">
+                    {item.groupName}
+                  </h3>
+                  <div className="h-0 w-[100px] cross-div"></div>
+                </div>
+
+                <div>
+                  <div className="min-w-[920px]">
+                    <table className="w-full text-left rtl:text-right dark:text-gray-400">
+                      <thead className="text-white uppercase bg-black dark:bg-gray-700 dark:text-gray-400 text-center">
+                        <tr>
+                          <th scope="col" className="px-6 py-3">
+                            Vị trí
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Đội bóng
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            số trận
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            T - H - B
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Hiệu số
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 flex justify-evenly"
+                          >
+                            <div className="bg-yellow-300 p-3"></div>/{" "}
+                            <div className="bg-red-500 p-3"></div>
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Điểm
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Lịch sử đấu
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {item.teams.map((subItem, index) => {
+                          return (
+                            <tr
+                              key={index}
+                              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                            >
+                              <th
+                                scope="row"
+                                className="px-6 py-4 whitespace-nowrap dark:text-white text-center"
+                              >
+                                {index + 1}
+                              </th>
+                              <td className="px-6 py-4">
+                                <div className="flex items-center">
+                                  <div className="w-[30px] lg:w-[40px] mr-3">
+                                    <img
+                                      src={getLogoByTeamName(subItem.teamName)}
+                                      alt=""
+                                    />
+                                  </div>
+                                  {subItem.teamName}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                {subItem.matchHistory.length}
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                {
+                                  subItem.matchHistory.filter((p) => p == "W")
+                                    ?.length
+                                }{" "}
+                                -{" "}
+                                {
+                                  subItem.matchHistory.filter((p) => p == "D")
+                                    ?.length
+                                }{" "}
+                                -{" "}
+                                {
+                                  subItem.matchHistory.filter((p) => p == "L")
+                                    ?.length
+                                }
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                <div className="flex justify-center">
+                                  {subItem.noOfGoal} / {subItem.noOfLostGoal}
+                                  <p
+                                    className={`${
+                                      (subItem.noOfGoal -
+                                        subItem.noOfLostGoal >=
+                                        0 &&
+                                        "text-green-500") ||
+                                      "text-red-500"
+                                    }`}
+                                  >
+                                    {`(${
+                                      subItem.noOfGoal - subItem.noOfLostGoal
+                                    })`}
+                                  </p>
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                {subItem.yellowCard}/{subItem.redCard}
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                {getPointOfTeam(subItem.matchHistory)}
+                              </td>
+                              <td className="px-6 py-4">
+                                <div className="flex justify-evenly items-center">
+                                  {subItem.matchHistory.map(
+                                    (subItemLv2, index) => {
+                                      return (
+                                        <p
+                                          key={index}
+                                          className={`px-2 rounded-[50%] text-center text-white ${
+                                            (subItemLv2 === "W" &&
+                                              "bg-green-500") ||
+                                            (subItemLv2 === "L" &&
+                                              "bg-red-500") ||
+                                            (subItemLv2 === "D" &&
+                                              "bg-gray-500")
+                                          }`}
+                                        >
+                                          {(subItemLv2 === "W" && "T") ||
+                                            (subItemLv2 === "D" && "H") ||
+                                            (subItemLv2 === "L" && "B")}
+                                        </p>
+                                      );
+                                    }
+                                  )}
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
