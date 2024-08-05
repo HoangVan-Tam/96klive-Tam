@@ -5,17 +5,18 @@ import {
   Data_MatchResult,
 } from "./common/Contants";
 import { getLogoByTeamName, getPointOfTeam } from "./common/Helper";
+import banner from "./assets/banner.jpg";
 import Carousel from "./components/Carousel";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
 
-      <h1 className="text-3xl font-bold underline h-[320px] bg-cyan-500">
-        Hello world!
-      </h1>
+      <div>
+        <img src={banner} alt="" width="100%" />
+      </div>
 
       <div
         className={`bg-[linear-gradient(0deg,rgba(0,0,0,0.85),rgba(0,0,0,0.85)),url('/src/assets/texture_bg.png')] bg-cover bg-no-repeat p-5 md:p-10`}
@@ -101,7 +102,7 @@ function App() {
                   className="block sm:min-w-[100%] md:min-w-[50%] xl:min-w-[33.33%] px-3"
                 >
                   <div className="sm:max-w-[520px] m-auto">
-                    <div className="bg-white pb-5 border-2 border-red-800">
+                    <div className="bg-white pb-5 border-2 border-red-800 min-h-[192px] relative">
                       <p className="bg-red-800 text-white w-fit p-2 text-xs font-bold m-auto">
                         AG FOOTBALL LEAGUE
                       </p>
@@ -138,12 +139,14 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-center text-sm text-black/50">
-                        {item.round}
-                      </p>
-                      <p className="text-center text-sm text-black/50">
-                        {item.matchDate}
-                      </p>
+                      <div className="absolute inset-x-0 bottom-5">
+                        <p className="text-center text-sm text-black/50">
+                          {item.round}
+                        </p>
+                        <p className="text-center text-sm text-black/50">
+                          {item.matchDate}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -194,7 +197,7 @@ function App() {
         <h2 className="text-center text-white uppercase px-5 font-bold bg-red-800 w-fit m-auto mb-10">
           Bảng xếp hạng
         </h2>
-        <div className="max-w-7xl m-auto overflow-x-scroll">
+        <div className="max-w-7xl m-auto lg:overflow-auto overflow-x-scroll">
           {Data_LeagueTable.map((item, index) => {
             return (
               <div key={index} className="mb-10">
@@ -312,7 +315,7 @@ function App() {
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 text-center">
-                                  {subItem.yellowCard}/{subItem.redCard}
+                                  {subItem.yellowCard} / {subItem.redCard}
                                 </td>
                                 <td className="px-6 py-4 text-center">
                                   {subItem.matchHistory.length}

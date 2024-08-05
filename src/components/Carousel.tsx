@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { CgArrowLongLeftC, CgArrowLongRightC } from "react-icons/cg";
 
 interface CarouselProps {
