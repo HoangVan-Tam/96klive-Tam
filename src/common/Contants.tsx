@@ -182,3 +182,24 @@ export const Data_LeagueTable = [
     ],
   },
 ];
+
+export const Data_TopScore = [
+  {
+    name: "Tâm",
+    playerNumber: "8",
+    score: 2,
+    teamName: "Thiên Phú",
+  },
+  {
+    name: "Hiếu",
+    playerNumber: "18",
+    score: 3,
+    teamName: "Bình An",
+  },
+  {
+    name: "Dũng",
+    playerNumber: "18",
+    score: 1,
+    teamName: "Bi-sôn",
+  },
+];

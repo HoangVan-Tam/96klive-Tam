@@ -3,6 +3,7 @@ import {
   Data_LeagueTable,
   Data_MatchIncoming,
   Data_MatchResult,
+  Data_TopScore,
 } from "./common/Contants";
 import { getLogoByTeamName, getPointOfTeam } from "./common/Helper";
 import banner from "./assets/banner.jpg";
@@ -274,7 +275,9 @@ function App() {
                                         alt=""
                                       />
                                     </div>
-                                    {subItem.teamName.toUpperCase()}
+                                    <p className="font-bold">
+                                      {subItem.teamName.toUpperCase()}
+                                    </p>
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 text-center">
@@ -355,6 +358,79 @@ function App() {
               </div>
             );
           })}
+        </div>
+      </div>
+      <div className="p-5 md:p-10">
+        <h2 className="text-center text-white uppercase px-5 font-bold bg-red-800 w-fit m-auto mb-10">
+          Top Ghi Bàn
+        </h2>
+        <div className="max-w-7xl m-auto lg:overflow-auto overflow-x-scroll">
+          <div className="mb-10">
+            <div>
+              <div className="min-w-[920px]">
+                <table className="w-full text-left rtl:text-right dark:text-gray-400">
+                  <thead className="text-white uppercase bg-black dark:bg-gray-700 dark:text-gray-400 text-center">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        Vị trí
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Đội bóng
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Cầu thủ
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Số áo
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Số bàn thắng
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Data_TopScore.sort((a, b) => {
+                      return b.score - a.score;
+                    }).map((item, index) => {
+                      return (
+                        <tr
+                          key={index}
+                          className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                        >
+                          <th
+                            scope="row"
+                            className="px-6 py-4 whitespace-nowrap dark:text-white text-center"
+                          >
+                            {index + 1}
+                          </th>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center">
+                              <div className="w-[20px] lg:w-[30px] mr-3">
+                                <img
+                                  src={getLogoByTeamName(item.teamName)}
+                                  alt=""
+                                />
+                              </div>
+                              <p>{item.teamName.toUpperCase()}</p>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 text-center font-bold">
+                            {item.name}
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            {item.playerNumber}
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            {item.score}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
